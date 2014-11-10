@@ -18,7 +18,7 @@ $( function() {
 
 		// Image source attribute
 		// Note:
-		// + This should set to 'src' or 'data-src'.
+		// + This should be set to 'src' or 'data-src'.
 		// + Setting this to 'data-src' will require you to use 'data-src' on all images that you want to use with Image Snap.
 		// + Setting this to 'src' may load each image an additional time in some browsers. Others may check the cache first.
 		// var imageSourceAttribute = 'data-src';
@@ -40,7 +40,7 @@ $( function() {
 			var parentWidth = parseInt( $image.parent().css( 'width' ) );
 			var lineHeight = parseInt( $image.css( 'line-height' ) );
 
-			// Creates new image in memory, sets image source and executes on image load
+			// Creates new image in-memory, sets image source and executes on image load
 			$( '<img>' ).attr( 'src', imageSrc ).load( function() {
 
 				// Native image dimensions
