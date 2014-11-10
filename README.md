@@ -1,17 +1,16 @@
 Image Snap
 ==========
+jQuery plugin that snaps images to the paragraph line height.
 
-Snaps images to the paragraph line height.
+Also does some responsive stuff.
 
 ## Docs
-[ docs go here ]
+Eventually...
 
 ## Quick Start
-Use `data-src` to link to your image.
+Do this.
 
 	<img data-src'url.png'>
-
-Done.
 
 ## How
 Read the code it's very simple and well documented.
