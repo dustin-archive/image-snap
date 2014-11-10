@@ -10,7 +10,7 @@ Eventually...
 ## Quick Start
 Do this.
 
-	<img data-src'url.png'>
+	<img data-src='url.png'>
 
 ## How
 Read the code it's very simple and well documented.
