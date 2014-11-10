@@ -13,4 +13,4 @@ Do this.
 	<img data-src='url.png'>
 
 ## How
-Read the code it's very simple and well documented.
+Read the code. It's very simple and well documented.
