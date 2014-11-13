@@ -10,6 +10,10 @@ Eventually...
 ## Quick Start
 Do this.
 
+	$( 'p img' ).imageSnap( 'data-src' );
+
+Then this.
+
 	<img data-src='url.png'>
 
 ## How
