@@ -1,4 +1,4 @@
-Image Snap
+Image Snap - 1.0.0
 ==========
 
 jQuery plugin that snaps images to the paragraph line height.

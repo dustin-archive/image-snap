@@ -1,4 +1,4 @@
-// Image Snap
+// Image Snap - 1.0.0
 // November 12, 2014
 // The MIT License (MIT)
 // Copyright (c) 2014 Dustin Dowell
