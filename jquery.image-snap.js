@@ -5,7 +5,7 @@
 // http://github.com/dustindowell22/image-snap
 
 
-(function ( $ ) {
+(function( $ ) {
 	$.fn.imageSnap = function( imageSourceAttribute ) {
 
 		// ====================
