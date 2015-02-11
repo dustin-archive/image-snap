@@ -1,59 +1,62 @@
-// Image Snap - 1.0.0
-// November 12, 2014
+// Image Snap - 1.0.1
+// Febuary 11, 2015
 // The MIT License (MIT)
-// Copyright (c) 2014 Dustin Dowell
+// Copyright (c) 2015 Dustin Dowell
 // http://github.com/dustindowell22/image-snap
+// =============================================
 
 
-(function( $ ) {
-  $.fn.imageSnap = function( imageSourceAttribute ) {
+(function($) {
+  $.fn.imageSnap = function(options) {
 
-    // ====================
-    // Preferences
-    // ====================
+    // Store object
+    var $this = $(this);
 
-      // Image selector
-      var imageSelector = $( this );
+    // Settings
+    var settings = $.extend({
+      imageSourceAttribute : 'data-src',
+      verticalMargin       : 16,
+      horzontalMargin      : 16
+    }, options);
 
-      // Image source attribute
-      // Note:
-      // + This should be set to 'src' or 'data-src'.
-      // + Setting this to 'data-src' will require you to use 'data-src' on all images that you want to use with Image Snap.
-      // + Setting this to 'src' may load each image an additional time in some browsers. Others may check the cache first.
-      if( imageSourceAttribute === undefined ) {
-        imageSourceAttribute = 'data-src';
-      }
-
-    // ====================
-
-
+    // Loop through images
     function imageSnap() {
-      $( imageSelector ).each( function() {
+      $this.each(function() {
 
-        // This selector
-        var $image = $( this );
+        // Store object
+        var $image = $(this);
 
         // Image source
-        var imageSrc = $image.attr( imageSourceAttribute );
+        var imageSrc = $image.attr(settings.imageSourceAttribute);
 
-        // Variables
-        var parentWidth = parseInt( $image.parent().css( 'width' ) );
-        var lineHeight = parseInt( $image.css( 'line-height' ) );
+        // Store styles
+        var lineHeight = parseInt($image.css('line-height')),
+            fontSize = parseInt($image.css('font-size'));
 
-        // Creates new image in-memory, sets image source and executes on image load
-        $( '<img>' ).attr( 'src', imageSrc ).load( function() {
+        // Create image element
+        $('<img>').attr('src', imageSrc).load(function() {
 
-          // Native image dimensions
-          // Note: $( this ) won't work on in memory images.
-          var nativeWidth = this.width;
-          var nativeHeight = this.height;
+          // Font Scale
+          var fontScale = fontSize / 16;
 
-          // Logic
-          var imageRatio = nativeWidth / nativeHeight;
-          var newHeight = Math.floor( ( nativeWidth / imageRatio ) / lineHeight ) * lineHeight;
-          var newWidthPercentage = ( newHeight * imageRatio ) / parentWidth;
+          // Margins
+          var horizontalMargin = settings.horzontalMargin * fontScale,
+              verticalMargin = settings.verticalMargin * fontScale;
 
-          // Resize image
+          // Native image dimensions mutiplied by fontScale
+          // Note: $(this) won't work on in-memory images
+          var nativeWidth = (this.width * fontScale) - horizontalMargin,
+              nativeHeight = (this.height * fontScale) - verticalMargin;
+
+          // Calculate new image dimensions
+          var imageRatio = nativeWidth / nativeHeight,
+              newHeight = Math.floor((nativeWidth / imageRatio) / lineHeight) * lineHeight;
+
+          // Calculate image width percentage of parent width
+          var parentWidth = $image.parent().width(),
+              newWidthPercentage = (newHeight * imageRatio) / parentWidth;
+
+          // Apply new image dimensions
           if( newWidthPercentage > (2/3) ) {
             $image.css({
               width: '100%',
@@ -69,12 +72,14 @@
         });
 
         // Load image
-        $image.attr( 'src', imageSrc );
+        $image.attr('src', imageSrc);
       });
     }
 
-    // Execute function
-    $( document ).on( 'ready', imageSnap );
-    $( window ).on( 'resize', imageSnap );
+    // Execute during runtime
+    imageSnap();
+
+    // Execute on resize
+    $(window).on('resize orientationchange', imageSnap);
   };
-}( jQuery ));
+}(jQuery));
