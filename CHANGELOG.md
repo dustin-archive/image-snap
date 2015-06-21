@@ -1,6 +1,11 @@
 Changelog
 ==========
 
+**June 20, 2015**
++ 1.0.2
+  + Converted to CoffeeScript
+  + Removed two thirds full-width image snapping, use media queries instead
+
 **February 11, 2015**
 + 1.0.1
   + Added horizontal and vertical margin compensation
