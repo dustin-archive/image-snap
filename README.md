@@ -9,7 +9,7 @@ jQuery plugin that snaps images to the paragraph line height.
 Do this:
 
 ```coffeescript
-$( 'img' ).imageSnap( 'data-src' )
+$('img').imageSnap('data-src')
 ```
 
 Then this:
