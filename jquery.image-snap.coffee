@@ -12,7 +12,7 @@
     # Loop through images
     $(this).each ->
 
-      # Store object
+      # Cache this object
       $image = $(this)
 
       # Image source
